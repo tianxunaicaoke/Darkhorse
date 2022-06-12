@@ -28,13 +28,17 @@ import com.tian.darkhorse.presentation.model.Itinerary
 fun ItineraryScreen(
     list: List<Itinerary>
 ) {
-    LazyColumn(
-        modifier = Modifier
-            .padding(16.dp)
-            .fillMaxHeight()
-    ) {
-        items(list) { item ->
-            ItineraryCard(item)
+    if(list.isEmpty()){
+        Text("没有近期机票行程单", modifier = Modifier.fillMaxSize().padding(top=300.dp), textAlign = TextAlign.Center)
+    }else{
+        LazyColumn(
+            modifier = Modifier
+                .padding(16.dp)
+                .fillMaxHeight()
+        ) {
+            items(list) { item ->
+                ItineraryCard(item)
+            }
         }
     }
 }
